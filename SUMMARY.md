@@ -5,7 +5,7 @@
 * [推荐自主学习教程](Course.md)
 * [第一章 基础知识](chapter_md/diyi_zhang_ji_chu_zhi_shi_md.md)
 * 第二章 环境搭建
-   * [开发工具介绍](chapter02/kai_fa_gong_ju_jieshao.md)
+   * [开发工具介绍](chapter01/android_studio_environment.md)
    * 环境搭建流程
    * 环境常见问题
 * 第三章 Hello World
