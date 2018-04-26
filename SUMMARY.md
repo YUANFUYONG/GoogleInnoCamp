@@ -3,12 +3,8 @@
 * [课程介绍](README.md)
 * 第一章 环境搭建
    * [Android Studio环境搭建](chapter01/android_studio_environment.md)
-   * 环境搭建流程
-   * 环境常见问题
-* 第三章 Hello World
-    * [项目建立流程](chapter_md/disan_zhang_hello_world_md.md)
-    * [项目文件结构](chapter_md/disan_zhang_hello_world_md.md)
-    * [项目编译运行](chapter_md/disan_zhang_hello_world_md.md)
+   * [python环境搭建](chapter01/python_environment.md)
+   * [tensorflow环境搭建](chapter01/tensorflow_environment.md)
 * [第四章 Activity的使用]()
     * 基本介绍
     * 生命周期
