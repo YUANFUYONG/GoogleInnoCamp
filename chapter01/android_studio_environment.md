@@ -17,3 +17,19 @@
 可以在为创建项目时在这里下载SDK
 ![安装完成后](../res/images/Android Studio6.png "Tile")
 此图显示的是Android API 27 下载了，其他的都是未下载，SDK版本的下载可以根据自己手机Android版本进行下载，如我的手机的Android版本是6.0的，则可以下载Android 6.0的SDK即可。
+![安装完成后](../res/images/Android Studio7.png "Tile")
+在这里修改SDK存放的路径。
+#####6、
+![安装完成后](../res/images/Android Studio8.png "Tile")
+新建项目时大家也要修改一下工作空间，如下图推荐大家的安装方式：
+![安装完成后](../res/images/Android Studio9.png "Tile")
+这样方便管理项目。
+#####7、
+![安装完成后](../res/images/Android Studio10.png "Tile")
+选择相应的SDK版本进行创建项目。
+#####8、
+![安装完成后](../res/images/Android Studio11.png "Tile")
+这里创建一个Empty Activity即可。
+#####9、
+![安装完成后](../res/images/Android Studio12.png "Tile")
+到这里Android studio就安装完成了，推荐使用手机进行测试，模拟器较慢。
