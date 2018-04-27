@@ -6,5 +6,5 @@
 
 
 ```
-GoogleInnoCamp创新特训营资料仓库
+2018 Google InnoCamp 北方民族大学特训营培训资料
 ```
