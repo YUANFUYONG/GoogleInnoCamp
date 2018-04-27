@@ -2,6 +2,8 @@
 
 #####1、
 ![安装完成后](../res/images/AndroidStudio1.png "Tile")
+
+
 前面的安装步骤和普通软件的安装步骤一样，这里笔者省略了，到这里时出现这个弹出框，显示的是没有发现Android SDk，点击取消即可。
 #####2、
 ![安装完成后](../res/images/androidStudio2.png "Tile")
