@@ -1,17 +1,8 @@
-##Android计算器代码核心代码
+##Android 计算器代码核心代码
 
 
-
-package fangshuoit.com.calculator;
-
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
-public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
+    public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
+   
     private Button btn_0;
     private Button btn_1;
     private Button btn_2;
