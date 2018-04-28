@@ -1,7 +1,7 @@
-###android¼ÆËãÆ÷´úÂë
+####androidè®¡ç®—å™¨ä»£ç 
 
 ```
-ÒµÎñÂß¼­´úÂë
+Androidè®¡ç®—å™¨ä¸šåŠ¡é€»è¾‘ä»£ç 
 ```
     public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
    
@@ -145,7 +145,7 @@
         clear_flag = true;
         double result = 0;
         String s1 = exp.substring(0, exp.indexOf(" "));
-        String op = exp.substring(exp.indexOf(" ") + 1, exp.indexOf(" ") + 2);//ÖĞ¼äµÄ·ûºÅ
+        String op = exp.substring(exp.indexOf(" ") + 1, exp.indexOf(" ") + 2);//ï¿½Ğ¼ï¿½Ä·ï¿½ï¿½ï¿½
         String s2 = exp.substring(exp.indexOf(" ") + 3);
         if (!s1.equals("") && !s2.equals("")) {
             double d1 = Double.parseDouble(s1);
@@ -196,7 +196,12 @@
             et_input.setText("");
         }
     }
-}
+ }
+ 
+ 
+
+
+
 
 
 
