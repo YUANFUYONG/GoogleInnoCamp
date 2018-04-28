@@ -16,3 +16,4 @@
 #####4、为了加快python包的安装速度，我们添加清华大学的国内镜像源，在命令行窗口执行下面两条命令即可
 ![安装完成后](../res/images/miniconda9.png "Tile")
 #####4、在命令行窗口输入python回车，enjoy yourself！
+![安装完成后](../res/images/miniconda10.png "Tile")
