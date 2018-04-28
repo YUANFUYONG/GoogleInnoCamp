@@ -1,4 +1,4 @@
-##tensorflow环境安装
+##tensorflow环境安装(windows版)
 ####<p align="right">北方民族大学  编辑：司庆龙</p>
 本教程假设您已经安装了Miniconda3，没安装的请移步python环境安装教程
 #####1、安装tensorflow，命令行输入conda install tensorflow回车即可
