@@ -92,131 +92,137 @@ Android计算器业务逻辑代码
     @Override
     public void onClick(View view) {
         String str = et_input.getText().toString();
-        switch (view.getId()) {
-            case R.id.btn_0:
-            case R.id.btn_1:
-            case R.id.btn_2:
-            case R.id.btn_3:
-            case R.id.btn_4:
-            case R.id.btn_5:
-            case R.id.btn_6:
-            case R.id.btn_7:
-            case R.id.btn_8:
-            case R.id.btn_9:
-                //小数点
-            case R.id.btn_point:
-                if (clear_flag) {
-                    clear_flag = false;
-                    str = "";
-                    et_input.setText("");
-                }
-                et_input.setText(str + ((Button) view).getText());
-                break;
-            //加号
-            case R.id.btn_plus:
-                //减号
-            case R.id.btn_minus:
-                //乘号
-            case R.id.btn_multiplay:
-                //除号
-            case R.id.btn_divide:
-                if (clear_flag) {
-                    clear_flag = false;
-                    str = "";
-                    et_input.setText("");
-                }
-                et_input.setText(str + " " + ((Button) view).getText() + " ");
-                break;
-            case R.id.btn_clean:
+               switch (view.getId()) {
+                   case R.id.btn_0:
+                   case R.id.btn_1:
+                   case R.id.btn_2:
+                   case R.id.btn_3:
+                   case R.id.btn_4:
+                   case R.id.btn_5:
+                   case R.id.btn_6:
+                   case R.id.btn_7:
+                   case R.id.btn_8:
+                   case R.id.btn_9:
+                       //小数点
+                   case R.id.btn_point:
+                       if (clear_flag) {
+                           clear_flag = false;
+                           str = "";
+                           et_input.setText("");
+                       }
+                       et_input.setText(str + ((Button) view).getText());
+                       break;
+                   //加号
+                   case R.id.btn_plus:
+                       //减号
+                   case R.id.btn_minus:
+                       //乘号
+                   case R.id.btn_multiplay:
+                       //除号
+                   case R.id.btn_divide:
+                       if (clear_flag) {
+                           clear_flag = false;
+                           str = "";
+                           et_input.setText("");
+                       }
+                       et_input.setText(str + " " + ((Button) view).getText() + " ");
+                       break;
+                   case R.id.btn_clean:
+                       clear_flag = false;
+                       et_input.setText("");
+                       break;
+                   //删除
+                   case R.id.btn_del:
+                       if (clear_flag) {
+                           clear_flag = false;
+                           et_input.setText("");
+                       } else if (str != null && !str.equals("")) {
+                           et_input.setText(str.substring(0, str.length() - 1));
+                       }
+                       //等号
+                   case R.id.btn_equal:
+                       getResult();
+                       break;
+                   default:
+                       break;
+               }
+    }
+
+      /**
+         * 单独的调用运算结果
+         */
+        private void getResult() {
+            //显示运算结果
+            String exp = et_input.getText().toString();
+            if (exp == null || exp.equals("")) {
+                return;
+            }
+            if (!exp.contains(" ")) {
+                return;
+            }
+            if (clear_flag) {
                 clear_flag = false;
-                et_input.setText("");
-                break;
-            //删除
-            case R.id.btn_del:
-                if (clear_flag) {
-                    clear_flag = false;
-                    et_input.setText("");
-                } else if (str != null && !str.equals("")) {
-                    et_input.setText(str.substring(0, str.length() - 1));
+                return;
+            }
+            clear_flag = true;
+            double result = 0;
+            String s1 = exp.substring(0, exp.indexOf(" "));//输入的第一个数
+            String op = exp.substring(exp.indexOf(" ") + 1, exp.indexOf(" ") + 2);//输入的中间符号
+            String s2 = exp.substring(exp.indexOf(" ") + 3);//输入的第二个数
+            if (!s1.equals("") && !s2.equals("")) {
+                double d1 = Double.parseDouble(s1);//第一个数
+                double d2 = Double.parseDouble(s2);//第二个数
+                if (op.equals("+")) {
+                    //进行加运算
+                    result = d1 + d2;
+                } else if (op.equals("-")) {
+                    //进行减运算
+                    result = d1 - d2;
+                } else if (op.equals("*")) {
+                    //进行乘运算
+                    result = d1 * d2;
+                } else if (op.equals("/")) {
+                    //进行除运算
+                    if (d2 == 0) {
+                        //除数为0，则结果为0,不进行判断就会出错
+                        result = 0;
+                    } else {
+                        result = d1 / d2;
+                    }
                 }
-                //等号
-            case R.id.btn_equal:
-                getResult();
-                break;
-            default:
-                break;
-        }
-    }
-
-    /**
-     * 单独的调用运算结果
-     */
-    private void getResult() {
-        String exp = et_input.getText().toString();
-        if (exp == null || exp.equals("")) {
-            return;
-        }
-        if (!exp.contains(" ")) {
-            return;
-        }
-        if (clear_flag) {
-            clear_flag = false;
-            return;
-        }
-        clear_flag = true;
-        double result = 0;
-        String s1 = exp.substring(0, exp.indexOf(" "));//第一个数
-        String op = exp.substring(exp.indexOf(" ") + 1, exp.indexOf(" ") + 2);//中间的符号
-        String s2 = exp.substring(exp.indexOf(" ") + 3);//第二个数
-        if (!s1.equals("") && !s2.equals("")) {
-            double d1 = Double.parseDouble(s1);//第一个数
-            double d2 = Double.parseDouble(s2);//第二个数
-            if (op.equals("+")) {
-                result = d1 + d2;
-            } else if (op.equals("-")) {
-                result = d1 - d2;
-            } else if (op.equals("*")) {
-                result = d1 * d2;
-            } else if (op.equals("/")) {
-                if (d2 == 0) {
-                    result = 0;
+                //判断第一个数、第二个数里面没有小数点、中间的符号没有除号，最后结果为整数
+                if (!s1.contains(".") && !s2.contains(".") && !op.equals("/")) {
+                    int r = (int) result;
+                    et_input.setText(r + "");
                 } else {
-                    result = d1 / d2;
+                    et_input.setText(result + "");
                 }
-            }
-            //第一个数、中间的符号和第二个数里面没有小数点，结果为整数
-            if (!s1.contains(".") && !s2.contains(".") && !op.equals("/")) {
-
-                int r = (int) result;
-                et_input.setText(r + "");
+                //第一个数不为空，第二个数为空
+            } else if (!s1.equals("") && s2.equals("")) {
+                et_input.setText(exp);
+                //第一个数为空，第二个数不为空，可以把第一个数看成0
+            } else if (s1.equals("") && !s2.equals("")) {
+                double d2 = Double.parseDouble(s2);
+                if (op.equals("+")) {
+                    result = 0 + d2;
+                } else if (op.equals("-")) {
+                    result = 0 - d2;
+                } else if (op.equals("*")) {
+                    result = 0;
+                } else if (op.equals("/")) {
+                    result = 0;
+                }
+                //第二数中不包含.，则第二个数为整数
+                if (!s2.contains(".")) {
+                    int r = (int) result;
+                    et_input.setText(r + " ");
+                } else {
+                    et_input.setText(result + " ");
+                }
             } else {
-                et_input.setText(result + "");
+                et_input.setText("");
             }
-        } else if (!s1.equals("") && s2.equals("")) {
-            et_input.setText(exp);
-            //第一个数为空，第二个数不为空，可以把第一个数看成0
-        } else if (s1.equals("") && !s2.equals("")) {
-            double d2 = Double.parseDouble(s2);
-            if (op.equals("+")) {
-                result = 0 + d2;
-            } else if (op.equals("-")) {
-                result = 0 - d2;
-            } else if (op.equals("*")) {
-                result = 0;
-            } else if (op.equals("/")) {
-                result = 0;
-            }
-            //第二数中不包含.，第二个数为整数
-            if (!s2.contains(".")) {
-                int r = (int) result;
-                et_input.setText(r + " ");
-            } else {
-                et_input.setText(result + " ");
-            }
-        } else {
-            et_input.setText("");
         }
-    }
      }
  
  
