@@ -34,6 +34,9 @@ Android计算器业务逻辑代码
         intitEvent();
     }
 
+    /**
+     * 初始化控件
+     */
     private void intitView() {
         btn_0 = (Button) findViewById(R.id.btn_0);
         btn_1 = (Button) findViewById(R.id.btn_1);
@@ -56,6 +59,9 @@ Android计算器业务逻辑代码
         et_input = (TextView) findViewById(R.id.et_input);
     }
 
+    /**
+     * 初始化事件
+     */
     private void intitEvent() {
         btn_0.setOnClickListener(this);
         btn_1.setOnClickListener(this);
@@ -78,6 +84,11 @@ Android计算器业务逻辑代码
         et_input.setOnClickListener(this);
     }
 
+    /**
+     * 点击事件
+     *
+     * @param view 点击的控件
+     */
     @Override
     public void onClick(View view) {
         String str = et_input.getText().toString();
@@ -92,6 +103,7 @@ Android计算器业务逻辑代码
             case R.id.btn_7:
             case R.id.btn_8:
             case R.id.btn_9:
+                //小数点
             case R.id.btn_point:
                 if (clear_flag) {
                     clear_flag = false;
@@ -100,9 +112,13 @@ Android计算器业务逻辑代码
                 }
                 et_input.setText(str + ((Button) view).getText());
                 break;
+            //加号
             case R.id.btn_plus:
+                //减号
             case R.id.btn_minus:
+                //乘号
             case R.id.btn_multiplay:
+                //除号
             case R.id.btn_divide:
                 if (clear_flag) {
                     clear_flag = false;
@@ -115,6 +131,7 @@ Android计算器业务逻辑代码
                 clear_flag = false;
                 et_input.setText("");
                 break;
+            //删除
             case R.id.btn_del:
                 if (clear_flag) {
                     clear_flag = false;
@@ -122,6 +139,7 @@ Android计算器业务逻辑代码
                 } else if (str != null && !str.equals("")) {
                     et_input.setText(str.substring(0, str.length() - 1));
                 }
+                //等号
             case R.id.btn_equal:
                 getResult();
                 break;
@@ -130,6 +148,9 @@ Android计算器业务逻辑代码
         }
     }
 
+    /**
+     * 单独的调用运算结果
+     */
     private void getResult() {
         String exp = et_input.getText().toString();
         if (exp == null || exp.equals("")) {
@@ -144,12 +165,12 @@ Android计算器业务逻辑代码
         }
         clear_flag = true;
         double result = 0;
-        String s1 = exp.substring(0, exp.indexOf(" "));
-        String op = exp.substring(exp.indexOf(" ") + 1, exp.indexOf(" ") + 2);//�м�ķ���
-        String s2 = exp.substring(exp.indexOf(" ") + 3);
+        String s1 = exp.substring(0, exp.indexOf(" "));//第一个数
+        String op = exp.substring(exp.indexOf(" ") + 1, exp.indexOf(" ") + 2);//中间的符号
+        String s2 = exp.substring(exp.indexOf(" ") + 3);//第二个数
         if (!s1.equals("") && !s2.equals("")) {
-            double d1 = Double.parseDouble(s1);
-            double d2 = Double.parseDouble(s2);
+            double d1 = Double.parseDouble(s1);//第一个数
+            double d2 = Double.parseDouble(s2);//第二个数
             if (op.equals("+")) {
                 result = d1 + d2;
             } else if (op.equals("-")) {
@@ -163,7 +184,7 @@ Android计算器业务逻辑代码
                     result = d1 / d2;
                 }
             }
-         
+            //第一个数、中间的符号和第二个数里面没有小数点，结果为整数
             if (!s1.contains(".") && !s2.contains(".") && !op.equals("/")) {
 
                 int r = (int) result;
@@ -173,7 +194,7 @@ Android计算器业务逻辑代码
             }
         } else if (!s1.equals("") && s2.equals("")) {
             et_input.setText(exp);
-           
+            //第一个数为空，第二个数不为空，可以把第一个数看成0
         } else if (s1.equals("") && !s2.equals("")) {
             double d2 = Double.parseDouble(s2);
             if (op.equals("+")) {
@@ -185,7 +206,7 @@ Android计算器业务逻辑代码
             } else if (op.equals("/")) {
                 result = 0;
             }
-           
+            //第二数中不包含.，第二个数为整数
             if (!s2.contains(".")) {
                 int r = (int) result;
                 et_input.setText(r + " ");
